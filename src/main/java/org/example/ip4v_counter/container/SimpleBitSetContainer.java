@@ -1,16 +1,17 @@
-package org.example.ip4v_counter;
+package org.example.ip4v_counter.container;
 
 import java.util.Arrays;
 import java.util.BitSet;
 
-public class BitSetContainerImpl implements BitSetContainer {
+public class SimpleBitSetContainer implements BitSetContainer {
 
-    private static final long SIZE_ONE_BIT_SET = Integer.MAX_VALUE + 1L;
-    private final BitSet[] bitSets;
-    private final long minIndex;
-    private final long maxIndex;
+    protected static final long SIZE_ONE_BIT_SET = Integer.MAX_VALUE + 1L;
 
-    public BitSetContainerImpl(long nbits) {
+    protected final BitSet[] bitSets;
+    protected final long minIndex;
+    protected final long maxIndex;
+
+    public SimpleBitSetContainer(long nbits) {
         int size = (int) divideRoundUp(nbits, SIZE_ONE_BIT_SET);
 
         bitSets = new BitSet[size];
@@ -52,7 +53,7 @@ public class BitSetContainerImpl implements BitSetContainer {
                 .sum();
     }
 
-    private long divideRoundUp(long num, long divisor) {
+    protected long divideRoundUp(long num, long divisor) {
         long mod = num % divisor;
         return num / divisor + (mod != 0 ? 1 : 0);
 

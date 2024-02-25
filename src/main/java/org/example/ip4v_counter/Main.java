@@ -22,7 +22,7 @@ public class Main {
             long t1 = System.currentTimeMillis();
 
             System.out.printf(
-                    "There are %d unique ip addresses in the %s file. The calculation took about %.2f ms.\n",
+                    "There are %d unique ip addresses in the '%s' file. The calculation took about %.2f ms.\n",
                     count, filename, (t1 - t0) / 1000.
             );
         }

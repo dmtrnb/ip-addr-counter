@@ -1,37 +1,38 @@
 package org.example.ip4v_counter.counter;
 
+import org.example.ip4v_counter.BitSetContainer;
+import org.example.ip4v_counter.BitSetContainerImpl;
 import org.example.ip4v_counter.converter.Ip4vAddrConverter;
 import org.example.ip4v_counter.validator.Validator;
 
-import java.io.*;
-import java.util.BitSet;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.LineNumberReader;
 import java.util.logging.Logger;
 
 public class BitSetIp4vAddrCounter implements Ip4vAddrCounter {
 
-    private final BitSet positive;
-    private final BitSet negative;
     private final Logger logger;
+    private final BitSetContainer bitSetContainer;
     private final Validator<String> ip4vAddrValidator;
     private final Ip4vAddrConverter<String, Integer> ip4vAddrConverter;
 
-    private static final int COUNT_OF_BITS = 2 << (32 - 6 - 1);
+    public static final long NBITS = 1L << 32;
     private static final String FILE_WAS_NOT_FOUND_MESSAGE = "File '%s' was not found";
     private static final String INVALID_IP_ADDR_MESSAGE = "Invalid ip address '%s' on %d line\n";
 
     public BitSetIp4vAddrCounter(
             Validator<String> ip4vAddrValidator, Ip4vAddrConverter<String, Integer> ip4vAddrConverter, Logger logger
     ) {
-        this.positive = new BitSet(COUNT_OF_BITS);
-        this.negative = new BitSet(COUNT_OF_BITS);
+        this.bitSetContainer = new BitSetContainerImpl(NBITS);
         this.logger = logger;
         this.ip4vAddrValidator = ip4vAddrValidator;
         this.ip4vAddrConverter = ip4vAddrConverter;
     }
 
     public long count(String filename) {
-        positive.clear();
-        negative.clear();
+        bitSetContainer.clear();
 
         try (LineNumberReader reader = new LineNumberReader(new FileReader(filename))) {
             String s;
@@ -43,11 +44,7 @@ public class BitSetIp4vAddrCounter implements Ip4vAddrCounter {
 
                 int num = ip4vAddrConverter.convert(s);
 
-                if (num < 0) {
-                    negative.set(~num);
-                } else {
-                    positive.set(num);
-                }
+                bitSetContainer.set(num);
             }
         } catch (FileNotFoundException e) {
             logger.severe(FILE_WAS_NOT_FOUND_MESSAGE.formatted(filename));
@@ -55,6 +52,6 @@ public class BitSetIp4vAddrCounter implements Ip4vAddrCounter {
             throw new RuntimeException(e);
         }
 
-        return positive.cardinality() + negative.cardinality();
+        return bitSetContainer.cardinality();
     }
 }

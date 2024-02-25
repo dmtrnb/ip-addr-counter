@@ -1,9 +1,10 @@
-package org.example.ip4v_counter.counter;
+package org.example.ip4v_counter.bitset_counter;
 
-import org.example.ip4v_counter.container.ConcurrentBitSetContainer;
-import org.example.ip4v_counter.counter.runner.ArrayStringIp4vAddrRunner;
-import org.example.ip4v_counter.container.BitSetContainer;
-import org.example.ip4v_counter.container.DependencyContainer;
+import org.example.ip4v_counter.bitset_counter.container.ConcurrentBitSetContainer;
+import org.example.ip4v_counter.bitset_counter.runner.ArrayStringIp4vAddrRunner;
+import org.example.ip4v_counter.bitset_counter.container.BitSetContainer;
+import org.example.ip4v_counter.bitset_counter.container.DependencyContainer;
+import org.example.ip4v_counter.counter.Ip4vAddrCounter;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;

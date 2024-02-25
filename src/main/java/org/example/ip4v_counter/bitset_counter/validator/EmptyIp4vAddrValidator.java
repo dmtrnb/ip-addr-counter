@@ -1,4 +1,4 @@
-package org.example.ip4v_counter.validator;
+package org.example.ip4v_counter.bitset_counter.validator;
 
 public class EmptyIp4vAddrValidator implements Validator<String> {
     @Override

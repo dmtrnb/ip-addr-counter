@@ -1,14 +1,15 @@
 package org.example.ip4v_counter;
 
-import org.example.ip4v_counter.converter.Ip4vAddrConverter;
-import org.example.ip4v_counter.converter.Shorts2IntegerIp4VAddrConverter;
-import org.example.ip4v_counter.converter.String2IntegerIp4VAddrConverter;
-import org.example.ip4v_counter.converter.String2ShotrsIp4VAddrConverter;
-import org.example.ip4v_counter.counter.BitSetIp4vAddrCounter;
+import org.example.ip4v_counter.bitset_counter.converter.Ip4vAddrConverter;
+import org.example.ip4v_counter.bitset_counter.converter.Shorts2IntegerIp4VAddrConverter;
+import org.example.ip4v_counter.bitset_counter.converter.String2IntegerIp4VAddrConverter;
+import org.example.ip4v_counter.bitset_counter.converter.String2ShotrsIp4VAddrConverter;
+import org.example.ip4v_counter.bitset_counter.BitSetIp4vAddrCounter;
 import org.example.ip4v_counter.counter.Ip4vAddrCounter;
-import org.example.ip4v_counter.counter.MultiThreadBitSetIp4vAddrCounter;
-import org.example.ip4v_counter.validator.Ip4vAddrValidator;
-import org.example.ip4v_counter.validator.Validator;
+import org.example.ip4v_counter.bitset_counter.MultiThreadBitSetIp4vAddrCounter;
+import org.example.ip4v_counter.bitset_counter.validator.Ip4vAddrValidator;
+import org.example.ip4v_counter.bitset_counter.validator.Validator;
+import org.example.ip4v_counter.external_sort_counter.ExternalSortIp4vAddrCounter;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -16,7 +17,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.logging.Logger;
 
-import static org.example.ip4v_counter.counter.MultiThreadBitSetIp4vAddrCounter.THREADS;
+import static org.example.ip4v_counter.bitset_counter.MultiThreadBitSetIp4vAddrCounter.THREADS;
 
 public class Main {
 
@@ -24,6 +25,7 @@ public class Main {
         Map<String, Ip4vAddrCounter> counters = new HashMap<>();
         counters.put("BitSetCounter", getBitSetCounter());
         counters.put("MultiThreadBitSetCounter", getMultiThreadBitSetCounter());
+        counters.put("ExternalSortCounter", new ExternalSortIp4vAddrCounter());
 
         counters.forEach((name, counter) -> {
             for (String filename: args) {

@@ -1,14 +1,14 @@
-package org.example.ip4v_counter.counter.runner;
+package org.example.ip4v_counter.bitset_counter.runner;
 
-import org.example.ip4v_counter.container.BitSetContainer;
-import org.example.ip4v_counter.container.DependencyContainer;
-import org.example.ip4v_counter.converter.Ip4vAddrConverter;
-import org.example.ip4v_counter.validator.Validator;
+import org.example.ip4v_counter.bitset_counter.container.BitSetContainer;
+import org.example.ip4v_counter.bitset_counter.container.DependencyContainer;
+import org.example.ip4v_counter.bitset_counter.converter.Ip4vAddrConverter;
+import org.example.ip4v_counter.bitset_counter.validator.Validator;
 
 import java.util.concurrent.CountDownLatch;
 import java.util.logging.Logger;
 
-import static org.example.ip4v_counter.counter.MultiThreadBitSetIp4vAddrCounter.THREADS;
+import static org.example.ip4v_counter.bitset_counter.MultiThreadBitSetIp4vAddrCounter.THREADS;
 
 public class ArrayStringIp4vAddrRunner implements Runnable {
 

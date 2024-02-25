@@ -1,11 +1,11 @@
-package org.example.ip4v_counter.container;
+package org.example.ip4v_counter.bitset_counter.container;
 
-import org.example.ip4v_counter.converter.Ip4vAddrConverter;
-import org.example.ip4v_counter.converter.Shorts2IntegerIp4VAddrConverter;
-import org.example.ip4v_counter.converter.String2IntegerIp4VAddrConverter;
-import org.example.ip4v_counter.converter.String2ShotrsIp4VAddrConverter;
-import org.example.ip4v_counter.validator.Ip4vAddrValidator;
-import org.example.ip4v_counter.validator.Validator;
+import org.example.ip4v_counter.bitset_counter.converter.Ip4vAddrConverter;
+import org.example.ip4v_counter.bitset_counter.converter.Shorts2IntegerIp4VAddrConverter;
+import org.example.ip4v_counter.bitset_counter.converter.String2IntegerIp4VAddrConverter;
+import org.example.ip4v_counter.bitset_counter.converter.String2ShotrsIp4VAddrConverter;
+import org.example.ip4v_counter.bitset_counter.validator.Ip4vAddrValidator;
+import org.example.ip4v_counter.bitset_counter.validator.Validator;
 
 import java.util.logging.Logger;
 

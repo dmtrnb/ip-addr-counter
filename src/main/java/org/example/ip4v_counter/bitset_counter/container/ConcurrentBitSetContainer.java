@@ -1,4 +1,4 @@
-package org.example.ip4v_counter.container;
+package org.example.ip4v_counter.bitset_counter.container;
 
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
@@ -23,14 +23,12 @@ public class ConcurrentBitSetContainer extends SimpleBitSetContainer implements 
             throw new IndexOutOfBoundsException("The bitIndex is outside the range of acceptable values: " + bitIndex);
         }
 
-        int arrayIndex, index;
-        if (bitIndex >= 0) {
-            arrayIndex = 2 * (int) (bitIndex / SIZE_ONE_BIT_SET);
-            index = (int) (bitIndex % SIZE_ONE_BIT_SET);
-        } else {
-            arrayIndex = 2 * (int) (~bitIndex / SIZE_ONE_BIT_SET) + 1;
-            index = (int) (~bitIndex % SIZE_ONE_BIT_SET);
+        boolean isNegative = bitIndex < 0;
+        if (isNegative) {
+            bitIndex = ~bitIndex;
         }
+        int index = (int) (bitIndex % SIZE_ONE_BIT_SET);
+        int arrayIndex = 2 * (int) (bitIndex / SIZE_ONE_BIT_SET) + (isNegative ? 1 : 0);
 
         Lock lock = locks[arrayIndex];
         lock.lock();

@@ -1,9 +1,10 @@
-package org.example.ip4v_counter.counter;
+package org.example.ip4v_counter.bitset_counter;
 
-import org.example.ip4v_counter.container.BitSetContainer;
-import org.example.ip4v_counter.container.SimpleBitSetContainer;
-import org.example.ip4v_counter.converter.Ip4vAddrConverter;
-import org.example.ip4v_counter.validator.Validator;
+import org.example.ip4v_counter.bitset_counter.container.BitSetContainer;
+import org.example.ip4v_counter.bitset_counter.container.SimpleBitSetContainer;
+import org.example.ip4v_counter.bitset_counter.converter.Ip4vAddrConverter;
+import org.example.ip4v_counter.bitset_counter.validator.Validator;
+import org.example.ip4v_counter.counter.Ip4vAddrCounter;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;

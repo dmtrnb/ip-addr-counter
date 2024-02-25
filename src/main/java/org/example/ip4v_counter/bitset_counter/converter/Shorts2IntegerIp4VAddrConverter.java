@@ -1,4 +1,4 @@
-package org.example.ip4v_counter.converter;
+package org.example.ip4v_counter.bitset_counter.converter;
 
 public class Shorts2IntegerIp4VAddrConverter implements Ip4vAddrConverter<short[], Integer> {
     @Override
